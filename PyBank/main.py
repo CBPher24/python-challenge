@@ -11,7 +11,6 @@ curr_month = 0
 prev_month = 0
 change = curr_month - prev_month
 total_change = 0.00
-#avg_change = change / num_of_months
 grtst_inc = 0
 grtst_inc_date = " "
 grtst_dec = 0
@@ -32,22 +31,30 @@ with open(csvpath) as csvfile:
         #initialize current month
         curr_month = int(row[1])
         #run change equation and add to total change
+        change = curr_month - prev_month
+        total_change = total_change + change
     
-    total_change = total_change + change
-    
-    #if statement off of change to find greatest increase and date
-
-    #if statement off of change to find greates decrease and date
+        #if statement off of change to find greatest increase and date
+        if int(row[1]) > grtst_inc:
+            grtst_inc = int(row[1])
+            grtst_inc_date = row[0]
+        #if statement off of change to find greates decrease and date
+        if int(row[1]) < grtst_dec:
+            grtst_dec = int(row[1])
+            grtst_dec_date = row[0]
+        #put current mont as previous
+        prev_month = curr_month
 
 #calculate the average of total change
+avg_change = round(total_change / num_of_months, 2)
 
 #print statement
 print("Financial Analysis\n----------------------")
 print(f"Total Months: {num_of_months}")
 print(f"Total: ${net_total}")
 print(f"Average Change: ${avg_change}")
-print(f"Greatest Increase in Profits: {grtst_inc_date} \(${grtst_inc}\)")
-print(f"Greatest Decrease in Profits: {grtst_dec_date} \(${grtst_dec}\)")
+print(f"Greatest Increase in Profits: {grtst_inc_date} (${grtst_inc})")
+print(f"Greatest Decrease in Profits: {grtst_dec_date} (${grtst_dec})")
 
 
 #export to text file
