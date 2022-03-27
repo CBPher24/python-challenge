@@ -10,7 +10,7 @@ tot_votes = 0
 #loop to run through data
     #running count of votes
 
-    #check to see if same candidate
+    #check to see if same candidate(make an nested list system where it makes a new list for new input from csv)
 
     #running count of votes for candidate
 
