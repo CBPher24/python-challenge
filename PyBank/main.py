@@ -33,7 +33,6 @@ with open(csvpath) as csvfile:
         #run change equation and add to total change
         change = curr_month - prev_month
         total_change = total_change + change
-    
         #if statement off of change to find greatest increase and date
         if int(row[1]) > grtst_inc:
             grtst_inc = int(row[1])
