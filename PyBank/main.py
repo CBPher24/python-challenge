@@ -1,8 +1,9 @@
 #import modules and data needed
 import os
 import csv
+import sys
 csvpath = os.path.relpath("PyBank/Resources/budget_data.csv")
-
+analysis = os.path.relpath("PyBank/Analysis/analysis.txt")
 
 #Initial Variables set
 num_of_months = 0
@@ -57,3 +58,11 @@ print(f"Greatest Decrease in Profits: {grtst_dec_date} (${grtst_dec})")
 
 
 #export to text file
+with open(analysis, "w") as save:
+    sys.stdout = save
+    print("Financial Analysis\n----------------------")
+    print(f"Total Months: {num_of_months}")
+    print(f"Total: ${net_total}")
+    print(f"Average Change: ${avg_change}")
+    print(f"Greatest Increase in Profits: {grtst_inc_date} (${grtst_inc})")
+    print(f"Greatest Decrease in Profits: {grtst_dec_date} (${grtst_dec})")
