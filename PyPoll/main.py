@@ -7,8 +7,16 @@ csvpath = os.path.relpath("PyPoll/Resources/election_data.csv")
 tot_votes = 0
 #running dict of candidates
 candid = {}
-#percentage of total votes for candidate
-n = 0
+prev_high = 0
+#define formule to do each canidate calc
+def result(name):
+    ballots = len(candid[name])
+    perc = round(( ballots / tot_votes ) * 100, 3)
+    print(f"{name}: {perc}% ({ballots})")
+    
+        
+
+
 
 
 
@@ -26,20 +34,26 @@ with open(csvpath) as csvfile:
             candid[person] = row
         else:
             candid[person].append(row)
-        #running count of votes for candidate
+       
+#running count of votes for candidate
+for names in list(candid.keys()):
+    count = len(candid[names])
+    if count > prev_high:
+        prev_high = count
+        winner = names
 
-
-print(list(candid.keys()))
-print(len(candid["Raymon Anthony Doane"]))
+# print(list(candid.keys()))
+# print(len(candid["Raymon Anthony Doane"]))
 #print statement for terminal
 print("Election Results\n------------------------")
 print(f"Total Votes: {tot_votes}\n------------------------")
 #all canidates, percentage of votes, and total votes for canidate
 #name: percentage% (total votes)
-
-#print("------------------------")
+for x in list(candid.keys()):
+    result(x)
+print("------------------------")
 #canidate with the most votes aka Winner
-#print(f"Winner: {}")
+print(f"Winner: {winner}")
 
 #print("------------------------")
 
