@@ -27,3 +27,5 @@ https://www.protechtraining.com/blog/post/python-for-beginners-reading-manipulat
 https://www.geeksforgeeks.org/python-ways-to-create-a-dictionary-of-lists/
 
 https://thispointer.com/python-get-first-value-in-a-dictionary/
+
+https://stackabuse.com/writing-to-a-file-with-pythons-print-function/
