@@ -17,8 +17,6 @@ grtst_inc_date = " "
 grtst_dec = 0
 grtst_dec_date = " "
 
-
-
 #open and start read on csv
 with open(csvpath) as csvfile:
     prof_loss = csv.reader(csvfile, delimiter=',')
@@ -55,7 +53,6 @@ print(f"Total: ${net_total}")
 print(f"Average Change: ${avg_change}")
 print(f"Greatest Increase in Profits: {grtst_inc_date} (${grtst_inc})")
 print(f"Greatest Decrease in Profits: {grtst_dec_date} (${grtst_dec})")
-
 
 #export to text file
 with open(analysis, "w") as save:
