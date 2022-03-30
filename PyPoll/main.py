@@ -8,17 +8,11 @@ tot_votes = 0
 #running dict of candidates
 candid = {}
 prev_high = 0
-#define formule to do each canidate calc
+#define function to do each canidate calc
 def result(name):
-    ballots = len(candid[name])
+    ballots = candid[name]
     perc = round(( ballots / tot_votes ) * 100, 3)
     print(f"{name}: {perc}% ({ballots})")
-    
-        
-
-
-
-
 
 #open and start read on csv
 with open(csvpath) as csvfile:
@@ -31,19 +25,18 @@ with open(csvpath) as csvfile:
         person = row[2]
         #check to see if same candidate
         if person not in candid:
-            candid[person] = row
+            candid[person] = 1   
         else:
-            candid[person].append(row)
+            candid[person] = candid[person] + 1
        
-#running count of votes for candidate
+#running loop check for winner
 for names in list(candid.keys()):
-    count = len(candid[names])
+    count = candid[names]
     if count > prev_high:
         prev_high = count
         winner = names
 
-# print(list(candid.keys()))
-# print(len(candid["Raymon Anthony Doane"]))
+
 #print statement for terminal
 print("Election Results\n------------------------")
 print(f"Total Votes: {tot_votes}\n------------------------")
@@ -52,9 +45,8 @@ print(f"Total Votes: {tot_votes}\n------------------------")
 for x in list(candid.keys()):
     result(x)
 print("------------------------")
-#canidate with the most votes aka Winner
+# #canidate with the most votes aka Winner
 print(f"Winner: {winner}")
-
-#print("------------------------")
+print("------------------------")
 
 #export data to txt file
