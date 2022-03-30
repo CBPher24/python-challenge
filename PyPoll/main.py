@@ -1,7 +1,9 @@
 #import modules and data needed
 import os
 import csv
+import sys
 csvpath = os.path.relpath("PyPoll/Resources/election_data.csv")
+analysis = os.path.relpath("PyPoll/Analysis/analysis.txt")
 
 #variables needed
 tot_votes = 0
@@ -36,7 +38,6 @@ for names in list(candid.keys()):
         prev_high = count
         winner = names
 
-
 #print statement for terminal
 print("Election Results\n------------------------")
 print(f"Total Votes: {tot_votes}\n------------------------")
@@ -50,3 +51,12 @@ print(f"Winner: {winner}")
 print("------------------------")
 
 #export data to txt file
+with open(analysis, "w") as save:
+    sys.stdout = save
+    print("Election Results\n------------------------")
+    print(f"Total Votes: {tot_votes}\n------------------------")
+    for x in list(candid.keys()):
+        result(x)
+    print("------------------------")
+    print(f"Winner: {winner}")
+    print("------------------------")
