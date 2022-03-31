@@ -30,3 +30,5 @@ Shivam_k. (2019, Mar 11). Python | Ways to create a dictionary of Lists. Geeksfo
 Varum. Python: Get first value in a dictionary. thisPointer. https://thispointer.com/python-get-first-value-in-a-dictionary/
 
 Stopak, J. (2021, Sep 19). Writing to a File with Python's print() Function. StackAbuse. https://stackabuse.com/writing-to-a-file-with-pythons-print-function/
+
+Python File Write. W3 Schools. https://www.w3schools.com/python/python_file_write.asp
