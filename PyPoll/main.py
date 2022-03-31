@@ -14,7 +14,7 @@ prev_high = 0
 def result(name):
     ballots = candid[name]
     perc = round(( ballots / tot_votes ) * 100, 3)
-    print(f"{name}: {perc}% ({ballots})")
+    a.write(f"{name}: {perc}% ({ballots})\n")
 
 #open and start read on csv
 with open(csvpath) as csvfile:
@@ -38,25 +38,18 @@ for names in list(candid.keys()):
         prev_high = count
         winner = names
 
-#print statement for terminal
-print("Election Results\n------------------------")
-print(f"Total Votes: {tot_votes}\n------------------------")
-#all canidates, percentage of votes, and total votes for canidate
-#name: percentage% (total votes)
+#saving the analysis to file
+a = open(analysis, "w")
+
+a.write("Election Results\n------------------------\n")
+a.write(f"Total Votes: {tot_votes}\n------------------------\n")
 for x in list(candid.keys()):
     result(x)
-print("------------------------")
-# #canidate with the most votes aka Winner
-print(f"Winner: {winner}")
-print("------------------------")
+a.write("------------------------\n")
+a.write(f"Winner: {winner}\n")
+a.write("------------------------\n")
+a.close()
 
-#export data to txt file
-with open(analysis, "w") as save:
-    sys.stdout = save
-    print("Election Results\n------------------------")
-    print(f"Total Votes: {tot_votes}\n------------------------")
-    for x in list(candid.keys()):
-        result(x)
-    print("------------------------")
-    print(f"Winner: {winner}")
-    print("------------------------")
+#reading file for terminal output
+a = open(analysis, "r")
+print(a.read())
