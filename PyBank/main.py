@@ -35,12 +35,12 @@ with open(csvpath) as csvfile:
         change = curr_month - prev_month
         total_change = total_change + change
         #if statement off of change to find greatest increase and date
-        if int(row[1]) > grtst_inc:
-            grtst_inc = int(row[1])
+        if change > grtst_inc:
+            grtst_inc = change
             grtst_inc_date = row[0]
         #if statement off of change to find greates decrease and date
-        if int(row[1]) < grtst_dec:
-            grtst_dec = int(row[1])
+        if change < grtst_dec:
+            grtst_dec = change
             grtst_dec_date = row[0]
         #put current mont as previous
         prev_month = curr_month
