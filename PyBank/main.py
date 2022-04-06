@@ -44,7 +44,7 @@ with open(csvpath) as csvfile:
         prev_month = curr_month
 
 #calculate the average of total change
-avg_change = round(total_change / num_of_months, 2)
+avg_change = round(total_change / (num_of_months-1), 2)
 
 #print statement
 print("Financial Analysis\n----------------------")
