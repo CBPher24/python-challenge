@@ -9,7 +9,7 @@ analysis = os.path.relpath("PyBank/Analysis/analysis.txt")
 num_of_months = 0
 net_total = 0
 curr_month = 0
-prev_month = 0
+prev_month = 1088983
 change = curr_month - prev_month
 total_change = 0.00
 grtst_inc = 0
@@ -44,7 +44,7 @@ with open(csvpath) as csvfile:
         prev_month = curr_month
 
 #calculate the average of total change
-avg_change = round(total_change / num_of_months, 2)
+avg_change = round(total_change / (num_of_months-1), 2)
 
 #print statement
 print("Financial Analysis\n----------------------")
