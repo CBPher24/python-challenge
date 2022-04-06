@@ -9,7 +9,7 @@ analysis = os.path.relpath("PyBank/Analysis/analysis.txt")
 num_of_months = 0
 net_total = 0
 curr_month = 0
-prev_month = 1088983
+prev_month = 0
 change = curr_month - prev_month
 total_change = 0.00
 grtst_inc = 0
@@ -23,6 +23,8 @@ with open(csvpath) as csvfile:
     next(prof_loss)
     #loop to go through the csv file
     for row in prof_loss:
+        if prev_month == 0:
+            prev_month = int(row[1])
         #add up months
         num_of_months = num_of_months + 1
         #running tab of net total
